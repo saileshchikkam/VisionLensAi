@@ -1,0 +1,10 @@
+{
+  "name": "VisionLens AI",
+  "description": "Smart Image Acquisition & Information System powered by Computer Vision and AI",
+  "requestFramePermissions": [
+    "camera"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
