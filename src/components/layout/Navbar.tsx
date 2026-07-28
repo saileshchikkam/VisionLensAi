@@ -59,7 +59,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   };
 
   return (
-    <header className={`h-16 border-b sticky top-0 z-40 px-6 flex items-center justify-between transition-colors duration-500 ${themeTokens.navbarBg} ${themeTokens.cardBorder}`}>
+    <header className={`h-16 border-b sticky top-0 z-40 px-3 sm:px-6 flex items-center justify-between transition-colors duration-500 ${themeTokens.navbarBg} ${themeTokens.cardBorder}`}>
       {/* Left: Brand / Section Title */}
       <div className="flex items-center space-x-4">
         <div className="flex items-center space-x-3 group cursor-pointer" onClick={onOpenAbout}>
@@ -167,7 +167,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           </button>
 
           {showNotifications && (
-            <div className={`absolute right-0 mt-2 w-80 rounded-2xl border p-4 z-50 animate-in fade-in slide-in-from-top-2 ${themeTokens.popoverBg}`}>
+            <div className={`absolute right-0 mt-2 w-72 sm:w-80 max-w-[calc(100vw-2rem)] rounded-2xl border p-4 z-50 animate-in fade-in slide-in-from-top-2 ${themeTokens.popoverBg}`}>
               <div className={`flex items-center justify-between pb-3 border-b ${isLight ? 'border-slate-200' : 'border-white/10'}`}>
                 <span className={`text-xs font-bold tracking-wide flex items-center gap-1.5 ${themeTokens.textPrimary}`}>
                   <Sparkles className={`w-3.5 h-3.5 ${themeTokens.accentText}`} /> System Activity

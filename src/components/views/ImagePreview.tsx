@@ -144,7 +144,7 @@ export const ImagePreview: React.FC<ImagePreviewProps> = ({
         ref={containerRef}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
-        className={`relative w-full h-[420px] md:h-[500px] flex items-center justify-center overflow-hidden cursor-crosshair select-none ${isLight ? 'bg-slate-100' : 'bg-[#0a0a0d]'}`}
+        className={`relative w-full h-[280px] sm:h-[420px] md:h-[500px] flex items-center justify-center overflow-hidden cursor-crosshair select-none ${isLight ? 'bg-slate-100' : 'bg-[#0a0a0d]'}`}
       >
         {/* Optional Grid Overlay */}
         {showGrid && (

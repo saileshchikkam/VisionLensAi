@@ -20,6 +20,14 @@ export const ThreeDColorCube: React.FC<ThreeDColorCubeProps> = ({ imageData }) =
     soundEngine.playClick();
 
     // Three.js Scene Setup
+    const updateSize = () => {
+      const w = mount.clientWidth || 600;
+      const h = mount.clientHeight || 400;
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+      renderer.setSize(w, h);
+    };
+
     const width = mount.clientWidth || 600;
     const height = mount.clientHeight || 400;
 
@@ -34,6 +42,9 @@ export const ThreeDColorCube: React.FC<ThreeDColorCubeProps> = ({ imageData }) =
     renderer.setSize(width, height);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     mount.appendChild(renderer.domElement);
+
+    const resizeObserver = new ResizeObserver(() => updateSize());
+    resizeObserver.observe(mount);
 
     // Draw RGB Bounding Wireframe Box
     const boxGeo = new THREE.BoxGeometry(2, 2, 2);
@@ -113,6 +124,7 @@ export const ThreeDColorCube: React.FC<ThreeDColorCubeProps> = ({ imageData }) =
     window.addEventListener('resize', handleResize);
 
     return () => {
+      resizeObserver.disconnect();
       window.removeEventListener('resize', handleResize);
       cancelAnimationFrame(animId);
       renderer.dispose();
@@ -123,11 +135,11 @@ export const ThreeDColorCube: React.FC<ThreeDColorCubeProps> = ({ imageData }) =
   }, [imageData.dataUrl, isRotating]);
 
   return (
-    <div className="w-full rounded-3xl bg-slate-900/80 border border-white/10 backdrop-blur-2xl shadow-2xl p-6 text-slate-100 space-y-6">
+    <div className="w-full rounded-3xl bg-slate-900/80 border border-white/10 backdrop-blur-2xl shadow-2xl p-3 sm:p-6 text-slate-100 space-y-6">
       {/* Header */}
       <div className="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-4">
         <div>
-          <h2 className="text-xl font-bold flex items-center gap-2">
+          <h2 className="text-lg sm:text-xl font-bold flex items-center gap-2">
             <Move3D className="w-5 h-5 text-cyan-400" />
             <span>3D RGB Color Cloud Space</span>
           </h2>
@@ -139,7 +151,7 @@ export const ThreeDColorCube: React.FC<ThreeDColorCubeProps> = ({ imageData }) =
         <div className="flex items-center gap-3">
           <button
             onClick={() => setIsRotating(!isRotating)}
-            className={`px-3 py-1.5 text-xs font-mono rounded-xl border transition-all ${
+            className={`px-3 py-2 text-xs font-mono rounded-xl border transition-all min-h-[44px] ${
               isRotating
                 ? 'bg-cyan-500/20 border-cyan-400 text-cyan-300'
                 : 'bg-slate-800 border-white/10 text-slate-400'
@@ -151,7 +163,7 @@ export const ThreeDColorCube: React.FC<ThreeDColorCubeProps> = ({ imageData }) =
       </div>
 
       {/* 3D Viewport */}
-      <div className="relative aspect-video w-full rounded-2xl bg-slate-950 border border-white/10 overflow-hidden flex items-center justify-center">
+      <div className="relative w-full h-[300px] sm:h-[420px] md:h-[520px] rounded-2xl bg-slate-950 border border-white/10 overflow-hidden flex items-center justify-center">
         <div ref={mountRef} className="w-full h-full" />
 
         {/* Axis Labels Overlay */}

@@ -48,11 +48,11 @@ export const ImageComparison: React.FC<ImageComparisonProps> = ({ currentImage, 
   };
 
   return (
-    <div className="w-full rounded-3xl bg-slate-900/80 border border-white/10 backdrop-blur-2xl shadow-2xl p-6 text-slate-100 space-y-6 font-sans">
+    <div className="w-full rounded-3xl bg-slate-900/80 border border-white/10 backdrop-blur-2xl shadow-2xl p-3 sm:p-6 text-slate-100 space-y-6 font-sans">
       {/* Header */}
       <div className="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-4">
         <div>
-          <h2 className="text-xl font-bold flex items-center gap-2">
+          <h2 className="text-lg sm:text-xl font-bold flex items-center gap-2">
             <Columns className="w-5 h-5 text-cyan-400" />
             <span>Dual Image Structural Comparison</span>
           </h2>

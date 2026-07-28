@@ -115,17 +115,17 @@ export const ImageInformationPanel: React.FC<ImageInformationPanelProps> = ({
   return (
     <div className="space-y-8 max-w-7xl mx-auto pb-12 select-none">
       {/* Navigation Sub-Tabs */}
-      <div className={`flex items-center justify-between border-b pb-4 ${isLight ? 'border-black/10' : 'border-white/10'}`}>
+      <div className={`flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-b pb-4 ${isLight ? 'border-black/10' : 'border-white/10'}`}>
         <div className="flex items-center space-x-2">
           <Sparkles className={`w-5 h-5 ${themeTokens.accentText}`} />
-          <h2 className={`text-xl font-bold tracking-wide ${themeTokens.textPrimary}`}>Image Analysis Dashboard</h2>
+          <h2 className={`text-lg sm:text-xl font-bold tracking-wide ${themeTokens.textPrimary}`}>Image Analysis Dashboard</h2>
         </div>
 
-        <div className={`flex items-center p-1 rounded-2xl backdrop-blur-xl border ${isLight ? 'bg-black/[0.04] border-black/[0.08]' : 'bg-white/[0.06] border-white/[0.1]'}`}>
-          <Button variant={activeTab === 'metrics' ? 'primary' : 'ghost'} size="sm" onClick={() => setActiveTab('metrics')}>Core Metrics</Button>
-          <Button variant={activeTab === 'histogram' ? 'primary' : 'ghost'} size="sm" onClick={() => setActiveTab('histogram')}>Histogram & Colors</Button>
-          <Button variant={activeTab === 'filters' ? 'primary' : 'ghost'} size="sm" onClick={() => setActiveTab('filters')}>CV Filters</Button>
-          <Button variant={activeTab === 'ai' ? 'primary' : 'ghost'} size="sm" onClick={() => setActiveTab('ai')}>AI Insights</Button>
+        <div className={`flex items-center w-full md:w-auto overflow-x-auto p-1 rounded-2xl backdrop-blur-xl border ${isLight ? 'bg-black/[0.04] border-black/[0.08]' : 'bg-white/[0.06] border-white/[0.1]'}`}>
+          <Button variant={activeTab === 'metrics' ? 'primary' : 'ghost'} size="sm" className="whitespace-nowrap min-h-[44px]" onClick={() => setActiveTab('metrics')}>Core Metrics</Button>
+          <Button variant={activeTab === 'histogram' ? 'primary' : 'ghost'} size="sm" className="whitespace-nowrap min-h-[44px]" onClick={() => setActiveTab('histogram')}>Histogram & Colors</Button>
+          <Button variant={activeTab === 'filters' ? 'primary' : 'ghost'} size="sm" className="whitespace-nowrap min-h-[44px]" onClick={() => setActiveTab('filters')}>CV Filters</Button>
+          <Button variant={activeTab === 'ai' ? 'primary' : 'ghost'} size="sm" className="whitespace-nowrap min-h-[44px]" onClick={() => setActiveTab('ai')}>AI Insights</Button>
         </div>
       </div>
 
@@ -143,12 +143,12 @@ export const ImageInformationPanel: React.FC<ImageInformationPanelProps> = ({
           </div>
         </div>
 
-        <div className="flex items-center space-x-2">
-          <Button variant="primary" size="sm" icon={Save} onClick={handleSaveImage}>Save to History</Button>
-          <Button variant="secondary" size="sm" icon={Download} onClick={handleDownloadFilteredImage}>Download Image</Button>
-          <Button variant="secondary" size="sm" icon={FileText} onClick={() => { soundEngine.playClick(); exportToPDF(data); onShowToast('PDF Exported', 'Vector PDF report generated', 'success'); }}>PDF Report</Button>
-          <Button variant="secondary" size="sm" icon={Download} onClick={() => { soundEngine.playClick(); exportToJSON(data); onShowToast('JSON Exported', 'Structured dataset downloaded', 'success'); }}>JSON</Button>
-          <Button variant="secondary" size="sm" icon={Download} onClick={() => { soundEngine.playClick(); exportToCSV(data); onShowToast('CSV Exported', 'Spreadsheet metrics exported', 'success'); }}>CSV</Button>
+        <div className="flex flex-wrap items-center gap-2 w-full sm:w-auto">
+          <Button variant="primary" size="sm" icon={Save} className="flex-1 sm:flex-initial min-h-[44px]" onClick={handleSaveImage}>Save to History</Button>
+          <Button variant="secondary" size="sm" icon={Download} className="flex-1 sm:flex-initial min-h-[44px]" onClick={handleDownloadFilteredImage}>Download Image</Button>
+          <Button variant="secondary" size="sm" icon={FileText} className="flex-1 sm:flex-initial min-h-[44px]" onClick={() => { soundEngine.playClick(); exportToPDF(data); onShowToast('PDF Exported', 'Vector PDF report generated', 'success'); }}>PDF Report</Button>
+          <Button variant="secondary" size="sm" icon={Download} className="flex-1 sm:flex-initial min-h-[44px]" onClick={() => { soundEngine.playClick(); exportToJSON(data); onShowToast('JSON Exported', 'Structured dataset downloaded', 'success'); }}>JSON</Button>
+          <Button variant="secondary" size="sm" icon={Download} className="flex-1 sm:flex-initial min-h-[44px]" onClick={() => { soundEngine.playClick(); exportToCSV(data); onShowToast('CSV Exported', 'Spreadsheet metrics exported', 'success'); }}>CSV</Button>
         </div>
       </GlassCard>
 

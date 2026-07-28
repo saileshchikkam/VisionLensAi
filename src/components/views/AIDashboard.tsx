@@ -35,7 +35,7 @@ export const AIDashboard: React.FC<AIDashboardProps> = ({ imageData }) => {
       </div>
 
       {/* Main Gauges Row */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
         {/* Quality Score Radial */}
         <GlassCard padding="md" className="flex flex-col items-center justify-center text-center space-y-2">
           <div className="relative w-24 h-24 flex items-center justify-center">

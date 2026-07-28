@@ -94,11 +94,11 @@ export const CNNVisualizer: React.FC<CNNVisualizerProps> = ({ imageData }) => {
   const currentMeta = LAYERS[activeLayer];
 
   return (
-    <div className="w-full rounded-3xl bg-slate-900/80 border border-white/10 backdrop-blur-2xl shadow-2xl p-6 text-slate-100 space-y-6">
+    <div className="w-full rounded-3xl bg-slate-900/80 border border-white/10 backdrop-blur-2xl shadow-2xl p-3 sm:p-6 text-slate-100 space-y-6">
       {/* Header */}
       <div className="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-4">
         <div>
-          <h2 className="text-xl font-bold flex items-center gap-2">
+          <h2 className="text-lg sm:text-xl font-bold flex items-center gap-2">
             <Layers className="w-5 h-5 text-cyan-400" />
             <span>Convolutional Neural Network (CNN) Visualizer</span>
           </h2>
@@ -110,7 +110,7 @@ export const CNNVisualizer: React.FC<CNNVisualizerProps> = ({ imageData }) => {
         <button
           onClick={startSimulation}
           disabled={isSimulating}
-          className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 text-white font-semibold text-xs font-mono shadow-lg hover:shadow-cyan-500/25 disabled:opacity-50 transition-all"
+          className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 text-white font-semibold text-xs font-mono shadow-lg hover:shadow-cyan-500/25 disabled:opacity-50 transition-all min-h-[44px]"
         >
           <Play className="w-4 h-4 fill-current" />
           <span>{isSimulating ? 'FORWARD PASS IN PROGRESS...' : 'RUN CNN INFERENCE PASS'}</span>
@@ -118,7 +118,7 @@ export const CNNVisualizer: React.FC<CNNVisualizerProps> = ({ imageData }) => {
       </div>
 
       {/* Layer Pipeline Flow Diagram */}
-      <div className="grid grid-cols-2 md:grid-cols-6 gap-3 font-mono text-xs">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 font-mono text-xs">
         {LAYERS.map((layer, idx) => (
           <button
             key={layer.id}
