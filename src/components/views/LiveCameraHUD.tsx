@@ -164,7 +164,7 @@ export const LiveCameraHUD: React.FC<LiveCameraHUDProps> = ({ onCaptureImage }) 
                   borderColor: ['rgba(34, 211, 238, 0.6)', 'rgba(168, 85, 247, 0.8)', 'rgba(34, 211, 238, 0.6)'],
                 }}
                 transition={{ repeat: Infinity, duration: 4, ease: 'easeInOut' }}
-                className="w-64 h-64 border-2 border-cyan-400/80 rounded-2xl relative flex flex-col justify-between p-2 shadow-[0_0_25px_rgba(34,211,238,0.2)]"
+                className="w-48 h-48 sm:w-64 sm:h-64 border-2 border-cyan-400/80 rounded-2xl relative flex flex-col justify-between p-2 shadow-[0_0_25px_rgba(34,211,238,0.2)]"
               >
                 <div className="flex justify-between items-center text-[10px] font-mono text-cyan-300 bg-black/60 px-2 py-0.5 rounded backdrop-blur">
                   <span>TARGET_ROI: 01</span>
@@ -177,8 +177,8 @@ export const LiveCameraHUD: React.FC<LiveCameraHUDProps> = ({ onCaptureImage }) 
             </div>
 
             {/* Bottom Controls Bar */}
-            <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between pointer-events-auto bg-slate-950/80 border border-white/10 rounded-2xl p-3 backdrop-blur-xl">
-              <div className="flex items-center gap-3">
+            <div className="absolute bottom-2 sm:bottom-4 left-2 sm:left-4 right-2 sm:right-4 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2 pointer-events-auto bg-slate-950/85 border border-white/10 rounded-2xl p-2.5 sm:p-3 backdrop-blur-xl">
+              <div className="flex items-center gap-2 flex-wrap">
                 {devices.length > 1 && (
                   <select
                     value={selectedDevice}
@@ -186,7 +186,7 @@ export const LiveCameraHUD: React.FC<LiveCameraHUDProps> = ({ onCaptureImage }) 
                       setSelectedDevice(e.target.value);
                       startCamera(e.target.value);
                     }}
-                    className="bg-slate-900 text-xs font-mono border border-white/10 rounded-xl px-3 py-2 text-slate-200 outline-none focus:border-cyan-400"
+                    className="bg-slate-900 text-xs font-mono border border-white/10 rounded-xl px-3 py-2 text-slate-200 outline-none focus:border-cyan-400 min-h-[44px]"
                   >
                     {devices.map((d, i) => (
                       <option key={d.deviceId} value={d.deviceId}>
@@ -198,7 +198,7 @@ export const LiveCameraHUD: React.FC<LiveCameraHUDProps> = ({ onCaptureImage }) 
 
                 <button
                   onClick={() => setIsScanning(!isScanning)}
-                  className={`px-3 py-1.5 text-xs font-mono rounded-xl border transition-all ${
+                  className={`px-3 py-2 text-xs font-mono rounded-xl border transition-all min-h-[44px] ${
                     isScanning
                       ? 'bg-cyan-500/20 border-cyan-400 text-cyan-300'
                       : 'bg-slate-800 border-white/10 text-slate-400'
@@ -213,7 +213,7 @@ export const LiveCameraHUD: React.FC<LiveCameraHUDProps> = ({ onCaptureImage }) 
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={handleCapture}
-                className="flex items-center gap-2 px-6 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 text-white font-semibold text-xs tracking-wide shadow-lg hover:shadow-cyan-500/25 transition-all"
+                className="flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 text-white font-semibold text-xs tracking-wide shadow-lg hover:shadow-cyan-500/25 transition-all min-h-[44px]"
               >
                 <Camera className="w-4 h-4" />
                 <span>SNAP FRAME</span>

@@ -54,7 +54,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
   ];
 
   return (
-    <aside className={`w-16 md:w-64 border-r flex flex-col justify-between py-6 px-3 z-30 shrink-0 transition-colors duration-500 ${themeTokens.sidebarBg} ${themeTokens.cardBorder}`}>
+    <aside className={`hidden md:flex w-56 lg:w-64 xl:w-72 border-r flex-col justify-between py-6 px-3 z-30 shrink-0 transition-colors duration-500 ${themeTokens.sidebarBg} ${themeTokens.cardBorder}`}>
       {/* Navigation Links */}
       <div className="space-y-6">
         <div className="hidden md:flex items-center px-3 space-x-2">

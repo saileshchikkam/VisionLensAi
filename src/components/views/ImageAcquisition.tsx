@@ -179,19 +179,20 @@ export const ImageAcquisition: React.FC<ImageAcquisitionProps> = ({
   };
 
   return (
-    <div className="p-6 max-w-6xl mx-auto space-y-8 select-none">
+    <div className="p-2 sm:p-6 max-w-6xl mx-auto space-y-6 sm:space-y-8 select-none">
       {/* Top Header Bar */}
-      <div className={`flex items-center justify-between pb-4 border-b ${isLight ? 'border-black/[0.08]' : 'border-white/[0.08]'}`}>
+      <div className={`flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b ${isLight ? 'border-black/[0.08]' : 'border-white/[0.08]'}`}>
         <div>
-          <h1 className={`text-2xl font-bold tracking-tight ${themeTokens.textPrimary}`}>Image Acquisition Workbench</h1>
+          <h1 className={`text-xl sm:text-2xl font-bold tracking-tight ${themeTokens.textPrimary}`}>Image Acquisition Workbench</h1>
           <p className={`text-xs mt-0.5 ${themeTokens.textMuted}`}>Stream live camera video or import high-resolution visual datasets</p>
         </div>
 
-        <div className={`flex items-center p-1 rounded-2xl backdrop-blur-xl border ${isLight ? 'bg-black/[0.04] border-black/[0.08]' : 'bg-white/[0.06] border-white/[0.1]'}`}>
+        <div className={`flex items-center w-full sm:w-auto p-1 rounded-2xl backdrop-blur-xl border ${isLight ? 'bg-black/[0.04] border-black/[0.08]' : 'bg-white/[0.06] border-white/[0.1]'}`}>
           <Button
             variant={subTab === 'capture' ? 'primary' : 'ghost'}
             size="sm"
             icon={Camera}
+            className="flex-1 sm:flex-initial min-h-[44px]"
             onClick={() => setSubTab('capture')}
           >
             Webcam Live
@@ -200,6 +201,7 @@ export const ImageAcquisition: React.FC<ImageAcquisitionProps> = ({
             variant={subTab === 'upload' ? 'primary' : 'ghost'}
             size="sm"
             icon={Upload}
+            className="flex-1 sm:flex-initial min-h-[44px]"
             onClick={() => setSubTab('upload')}
           >
             Upload & Presets

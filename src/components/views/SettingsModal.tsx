@@ -130,15 +130,15 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             </div>
           </div>
 
-          {/* Modal Body: macOS Settings Side Navigation + Content Pane */}
-          <div className="flex flex-1 overflow-hidden min-h-[460px]">
-            {/* Sidebar Navigation */}
-            <div className={`w-56 p-3 border-r flex flex-col space-y-1 select-none ${isLight ? 'border-slate-200/80 bg-slate-50/50' : 'border-white/10 bg-slate-950/40'}`}>
+          {/* Modal Body: macOS Settings Navigation + Content Pane */}
+          <div className="flex flex-col md:flex-row flex-1 overflow-hidden min-h-[400px] md:min-h-[460px]">
+            {/* Navigation Tabs (Horizontal on mobile < md, Vertical Sidebar on >= md) */}
+            <div className={`w-full md:w-56 p-3 border-b md:border-b-0 md:border-r flex flex-row md:flex-col overflow-x-auto md:overflow-x-visible gap-2 md:gap-1 shrink-0 select-none ${isLight ? 'border-slate-200/80 bg-slate-50/50' : 'border-white/10 bg-slate-950/40'}`}>
               {[
-                { id: 'appearance', label: 'Appearance & Theme', icon: Palette },
-                { id: 'glass', label: 'Glass & Wallpapers', icon: Sliders },
+                { id: 'appearance', label: 'Appearance', icon: Palette },
+                { id: 'glass', label: 'Glass & Motion', icon: Sliders },
                 { id: 'audio', label: 'Audio & Hardware', icon: Volume2 },
-                { id: 'ai', label: 'AI Engine & Locale', icon: Cpu },
+                { id: 'ai', label: 'AI & Locale', icon: Cpu },
               ].map((section) => {
                 const Icon = section.icon;
                 const isActive = activeSection === section.id;
@@ -149,20 +149,20 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                       soundEngine.playClick();
                       setActiveSection(section.id as SettingsSection);
                     }}
-                    className={`w-full px-3.5 py-2.5 rounded-2xl flex items-center gap-2.5 text-xs font-semibold transition-all ${
+                    className={`px-3.5 py-2.5 rounded-2xl flex items-center gap-2 text-xs font-semibold whitespace-nowrap transition-all min-h-[44px] ${
                       isActive
                         ? `${themeTokens.accentBg} shadow-md`
                         : `${themeTokens.textSecondary} ${themeTokens.bgHover}`
                     }`}
                   >
-                    <Icon className="w-4 h-4" />
+                    <Icon className="w-4 h-4 shrink-0" />
                     <span>{section.label}</span>
                   </button>
                 );
               })}
 
-              {/* Live Preview Card Widget */}
-              <div className="mt-auto pt-4">
+              {/* Live Preview Card Widget (Desktop only) */}
+              <div className="hidden md:block mt-auto pt-4">
                 <div className={`p-3.5 rounded-2xl border ${themeTokens.cardBg} ${themeTokens.cardBorder} space-y-2`}>
                   <div className="flex items-center justify-between text-[11px] font-bold">
                     <span className={themeTokens.textPrimary}>Glass Preview</span>
@@ -181,7 +181,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             </div>
 
             {/* Main Content Area */}
-            <div className="flex-1 p-6 overflow-y-auto space-y-6">
+            <div className="flex-1 p-4 sm:p-6 overflow-y-auto space-y-6">
               {/* SECTION 1: APPEARANCE */}
               {activeSection === 'appearance' && (
                 <motion.div initial={{ opacity: 0, x: 8 }} animate={{ opacity: 1, x: 0 }} className="space-y-6">
@@ -190,7 +190,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                     <label className={`text-xs font-bold uppercase tracking-wider block ${themeTokens.textSecondary}`}>
                       System Appearance Mode
                     </label>
-                    <div className="grid grid-cols-3 gap-3">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                       {[
                         { id: 'dark', label: 'Dark Mode', icon: Moon, desc: 'Deep slate glass canvas' },
                         { id: 'light', label: 'Light Mode', icon: Sun, desc: 'macOS Sonoma frosted light' },
@@ -227,7 +227,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                     <label className={`text-xs font-bold uppercase tracking-wider block ${themeTokens.textSecondary}`}>
                       Accent Color Theme
                     </label>
-                    <div className="grid grid-cols-3 gap-3">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
                       {Object.entries(ACCENT_COLOR_MAP).map(([key, color]) => {
                         const isSelected = localSettings.accentColor === key;
                         return (

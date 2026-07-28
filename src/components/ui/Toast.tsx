@@ -10,7 +10,7 @@ interface ToastProps {
 
 export const ToastContainer: React.FC<ToastProps> = ({ notifications, onDismiss }) => {
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col space-y-3 max-w-sm w-full pointer-events-none">
+    <div className="fixed bottom-20 md:bottom-6 right-3 md:right-6 left-3 md:left-auto z-50 flex flex-col space-y-3 max-w-sm w-[calc(100vw-1.5rem)] md:w-full pointer-events-none">
       <AnimatePresence>
         {notifications.map((n) => {
           let Icon = Info;

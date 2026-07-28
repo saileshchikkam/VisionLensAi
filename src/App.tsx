@@ -10,6 +10,7 @@ import { useTheme } from './context/ThemeContext';
 
 import { Navbar } from './components/layout/Navbar';
 import { Sidebar } from './components/layout/Sidebar';
+import { MobileNav } from './components/layout/MobileNav';
 import { SplashScreen } from './components/ui/SplashScreen';
 import { LandingPage } from './components/views/LandingPage';
 import { ImageAcquisition } from './components/views/ImageAcquisition';
@@ -40,6 +41,7 @@ export default function App() {
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [isAboutOpen, setIsAboutOpen] = useState(false);
   const [isShortcutsOpen, setIsShortcutsOpen] = useState(false);
+  const [isMobileDrawerOpen, setIsMobileDrawerOpen] = useState(false);
 
   // Active Analysis Data
   const [currentAnalysis, setCurrentAnalysis] = useState<ImageAnalysisData | null>(null);
@@ -299,7 +301,7 @@ export default function App() {
         />
 
         {/* Main Content Area */}
-        <main className="flex-1 overflow-y-auto relative p-6">
+        <main className="flex-1 overflow-y-auto relative p-3 sm:p-4 md:p-6 lg:p-8 pb-20 md:pb-6">
           {activeTab === 'home' && (
             <LandingPage
               onNavigate={(tab) => {
@@ -428,6 +430,23 @@ export default function App() {
       <KeyboardShortcutsDrawer
         isOpen={isShortcutsOpen}
         onClose={() => setIsShortcutsOpen(false)}
+      />
+
+      {/* Mobile Bottom Navigation & Drawer Sheet */}
+      <MobileNav
+        activeTab={activeTab}
+        onTabChange={(tab) => {
+          setActiveTab(tab);
+          if (tab === 'capture') setAcquisitionSubTab('capture');
+          if (tab === 'upload') setAcquisitionSubTab('upload');
+        }}
+        onOpenSettings={() => setIsSettingsOpen(true)}
+        onOpenAbout={() => setIsAboutOpen(true)}
+        onOpenShortcuts={() => setIsShortcutsOpen(true)}
+        historyCount={historyRecords.length}
+        isDrawerOpen={isMobileDrawerOpen}
+        onToggleDrawer={() => setIsMobileDrawerOpen((prev) => !prev)}
+        onCloseDrawer={() => setIsMobileDrawerOpen(false)}
       />
 
       {/* Toast Notifications */}

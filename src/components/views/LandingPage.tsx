@@ -72,12 +72,13 @@ export const LandingPage: React.FC<LandingPageProps> = ({
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex flex-wrap items-center justify-center gap-4 pt-2"
+          className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 pt-2 max-w-md mx-auto sm:max-w-none"
         >
           <Button
             variant="primary"
             size="lg"
             icon={Camera}
+            className="w-full sm:w-auto min-h-[44px]"
             onClick={() => onNavigate('capture')}
           >
             Capture Image
@@ -87,6 +88,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
             variant="secondary"
             size="lg"
             icon={Upload}
+            className="w-full sm:w-auto min-h-[44px]"
             onClick={() => onNavigate('upload')}
           >
             Upload Image
@@ -96,6 +98,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
             variant="ghost"
             size="lg"
             icon={Eye}
+            className="w-full sm:w-auto min-h-[44px]"
             onClick={onOpenAbout}
           >
             Documentation
